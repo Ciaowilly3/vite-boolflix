@@ -4,9 +4,15 @@
   >
     <h1 class="text-danger">BOOLFLIX</h1>
     <div class="form-container">
-      <form action="" class="d-flex gap-4 me-2">
+      <form action="" class="d-flex gap-4 me-2" @submit.prevent="startSearch()">
         <div class="form-group">
-          <input type="text" name="" id="" class="form-control" />
+          <input
+            type="text"
+            name=""
+            id=""
+            class="form-control"
+            v-model="filters.name"
+          />
         </div>
         <button type="submit" class="btn btn-secondary text-white">
           Cerca
@@ -17,5 +23,20 @@
 </template>
 <style lang="scss" scoped></style>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      filters: {
+        name: "",
+      },
+    };
+  },
+  emits: ["search"],
+  methods: {
+    startSearch() {
+      console.log(this.filters.name);
+      this.$emit("search", { ...this.filters });
+    },
+  },
+};
 </script>
