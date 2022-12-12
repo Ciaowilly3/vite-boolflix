@@ -34,7 +34,7 @@ export default {
   emits: ["search"],
   methods: {
     startSearch() {
-      console.log(this.filters.name);
+      //   console.log(this.filters.name);
       this.$emit("search", { ...this.filters });
     },
   },

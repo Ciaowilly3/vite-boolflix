@@ -1,5 +1,6 @@
 <template>
   <TheHeader @search="startFetch"></TheHeader>
+  <FilmCard></FilmCard>
 </template>
 
 <style lang="scss">
@@ -8,10 +9,11 @@
 
 <script>
 import TheHeader from "./components/TheHeader.vue";
+import FilmCard from "./components/FilmCard.vue";
 import { store, fetchFilm } from "./store";
 
 export default {
-  components: { TheHeader },
+  components: { TheHeader, FilmCard },
   data() {
     return {
       store,
@@ -19,7 +21,7 @@ export default {
   },
   methods: {
     startFetch(givenFilters) {
-      console.log("app " + givenFilters.name);
+      // console.log("app " + givenFilters.name);
       fetchFilm(givenFilters);
     },
   },
