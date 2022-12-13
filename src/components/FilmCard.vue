@@ -5,7 +5,10 @@
         {{ movie.title }}
         <ul>
           <li>Titolo originale: {{ movie.original_title }}</li>
-          <li>Lingua originale: {{ movie.original_language }}</li>
+          <li>
+            Lingua originale:
+            <span :class="flagCreator(movie.original_language)"></span>
+          </li>
           <li>Media dei voti su TMDB: {{ movie.vote_average }}</li>
         </ul>
       </li>
@@ -20,6 +23,14 @@ export default {
     return {
       store,
     };
+  },
+  methods: {
+    flagCreator(lang) {
+      if (lang === "en") {
+        lang = "us";
+      }
+      return "fi fi-" + lang;
+    },
   },
 };
 </script>

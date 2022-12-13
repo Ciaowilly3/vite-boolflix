@@ -16,6 +16,7 @@ export function fetchFilm(filters) {
     })
     .then((resp) => {
       store.filmsArray = resp.data.results;
+
       console.log(store.filmsArray);
     });
 }
