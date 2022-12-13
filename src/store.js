@@ -2,6 +2,7 @@ import { reactive } from "vue";
 import axios from "axios";
 export const store = reactive({
   filmsArray: [],
+  seriesArray: [],
 });
 export function fetchFilm(filters) {
   //   console.log("store " + filters.name);
@@ -18,5 +19,19 @@ export function fetchFilm(filters) {
       store.filmsArray = resp.data.results;
 
       console.log(store.filmsArray);
+    });
+  axios
+    .get("https://api.themoviedb.org/3/search/tv", {
+      params: {
+        api_key: "387492cbf4529b42ad2e62f79d42a1a9",
+        query: filters.name,
+        include_adult: true,
+        language: "it-IT",
+      },
+    })
+    .then((resp) => {
+      store.seriesArray = resp.data.results;
+
+      console.log(store.seriesArray);
     });
 }
