@@ -1,14 +1,14 @@
 <template>
   <div class="poster-container">
-    <img :src="imageCreator(movie.poster_path)" alt="" class="w-100 d-block" />
+    <img :src="imageCreator(serie.poster_path)" alt="" class="w-100 d-block" />
     <div class="info-container d-none">
-      {{ movie.title }}
-      Titolo originale: {{ movie.original_title }}
+      {{ serie.name }}
+      Titolo originale: {{ serie.original_name }}
 
       Lingua originale:
-      <span :class="flagCreator(movie.original_language)"></span>
+      <span :class="flagCreator(serie.original_language)"></span>
 
-      Media dei voti su TMDB: {{ movie.vote_average }}
+      Media dei voti su TMDB: {{ serie.vote_average }}
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@
 import { store } from "../store";
 export default {
   props: {
-    movie: Object,
+    serie: Object,
   },
   data() {
     return {

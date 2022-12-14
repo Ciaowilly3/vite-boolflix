@@ -8,7 +8,7 @@
     <h1 class="my-5">Serie</h1>
     <div class="d-flex card-row">
       <div class="card-container" v-for="serie in store.seriesArray">
-        <SingleCard :movie="serie"></SingleCard>
+        <SerieCard :serie="serie"></SerieCard>
       </div>
     </div>
   </div>
@@ -31,8 +31,9 @@
 <script>
 import { store } from "../store";
 import SingleCard from "./SingleCard.vue";
+import SerieCard from "./SerieCard.vue";
 export default {
-  components: { SingleCard },
+  components: { SingleCard, SerieCard },
   data() {
     return {
       store,
