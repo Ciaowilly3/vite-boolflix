@@ -1,6 +1,6 @@
 <template>
   <TheHeader @search="startFetch"></TheHeader>
-  <FilmCard></FilmCard>
+  <CardsCreator></CardsCreator>
 </template>
 
 <style lang="scss">
@@ -9,11 +9,11 @@
 
 <script>
 import TheHeader from "./components/TheHeader.vue";
-import FilmCard from "./components/FilmCard.vue";
+import CardsCreator from "./components/CardsCreator.vue";
 import { store, fetchFilm } from "./store";
 
 export default {
-  components: { TheHeader, FilmCard },
+  components: { TheHeader, CardsCreator },
   data() {
     return {
       store,

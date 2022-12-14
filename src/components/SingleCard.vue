@@ -1,52 +1,51 @@
 <template>
-  <ul>
-    <li>
-      {{ this.movie.title }}
-      <div class="poster-container">
-        <img
-          :src="imageCreator(this.movie.poster_path)"
-          alt=""
-          class="w-100 d-block"
-        />
+  <div class="film-container">
+    <div class="poster-container">
+      <img
+        :src="imageCreator(movie.poster_path)"
+        alt=""
+        class="w-100 d-block"
+      />
+      <div class="info-container d-none">
+        {{ movie.title }}
+        Titolo originale: {{ movie.original_title }}
+
+        Lingua originale:
+        <span :class="flagCreator(movie.original_language)"></span>
+
+        Media dei voti su TMDB: {{ movie.vote_average }}
       </div>
-      <ul>
-        <li>Titolo originale: {{ this.movie.original_title }}</li>
-        <li>
-          Lingua originale:
-          <span :class="flagCreator(this.movie.original_language)"></span>
-        </li>
-        <li>Media dei voti su TMDB: {{ this.movie.vote_average }}</li>
-      </ul>
-    </li>
-  </ul>
-  <ul>
-    <li>
-      {{ serie.name }}
-      <div class="poster-container">
-        <img
-          :src="imageCreator(this.serie.poster_path)"
-          alt=""
-          class="w-100 d-block"
-        />
+    </div>
+  </div>
+  <div class="serie-container">
+    <div class="poster-container">
+      <img
+        :src="imageCreator(movie.poster_path)"
+        alt=""
+        class="w-100 d-block"
+      />
+      <div class="info-container d-none">
+        {{ movie.name }}
+        Titolo originale: {{ movie.original_name }}
+
+        Lingua originale:
+        <span :class="flagCreator(movie.original_language)"></span>
+
+        Media dei voti su TMDB: {{ movie.vote_average }}
       </div>
-      <ul>
-        <li>Titolo originale: {{ this.serie.original_name }}</li>
-        <li>
-          Lingua originale:
-          <span :class="flagCreator(this.serie.original_language)"></span>
-        </li>
-        <li>Media dei voti su TMDB: {{ this.serie.vote_average }}</li>
-      </ul>
-    </li>
-  </ul>
+    </div>
+  </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.poster-container {
+  width: 100%;
+}
+</style>
 <script>
 import { store } from "../store";
 export default {
   props: {
     movie: Object,
-    serie: Object,
   },
   data() {
     return {
@@ -74,7 +73,7 @@ export default {
       if (!url) {
         return "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/restroom-out-of-order-door-sign-printable-design-template-cc665dd6f85fc0e9a7f116e283acc820_screen.jpg?ts=1637013157";
       }
-      return "https://image.tmdb.org/t/p/" + "w92" + url;
+      return "https://image.tmdb.org/t/p/" + "w342" + url;
     },
   },
 };

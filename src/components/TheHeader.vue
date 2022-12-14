@@ -34,7 +34,7 @@ export default {
   emits: ["search"],
   methods: {
     startSearch() {
-      //   console.log(this.filters.name);
+      //   al click di enter parte l'emit per avvertire lo store di iniziare il fetch con i filtri inseriti
       this.$emit("search", { ...this.filters });
     },
   },
