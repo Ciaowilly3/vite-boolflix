@@ -1,20 +1,18 @@
 <template>
-  <div class="poster-container">
-    <img :src="imageCreator(serie.poster_path)" alt="" class="w-100 d-block" />
-    <div class="info-container d-none">
-      {{ serie.name }}
-      Titolo originale: {{ serie.original_name }}
+  <img :src="imageCreator(serie.poster_path)" alt="" class="w-100 d-block" />
+  <div class="info-container">
+    {{ serie.name }}
+    Titolo originale: {{ serie.original_name }}
 
-      Lingua originale:
-      <span :class="flagCreator(serie.original_language)"></span>
+    Lingua originale:
+    <span :class="flagCreator(serie.original_language)"></span>
 
-      Media dei voti su TMDB: {{ serie.vote_average }}
-    </div>
+    Media dei voti su TMDB: {{ serie.vote_average }}
   </div>
 </template>
 <style lang="scss" scoped>
-.poster-container {
-  width: 100%;
+.info-container {
+  display: none;
 }
 </style>
 <script>

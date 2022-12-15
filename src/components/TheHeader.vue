@@ -2,7 +2,7 @@
   <div
     class="container-fluid bg-dark d-flex align-items-center justify-content-between"
   >
-    <h1 class="text-danger">BOOLFLIX</h1>
+    <h1 class="text-danger py-2">BOOLFLIX</h1>
     <div class="form-container">
       <form action="" class="d-flex gap-4 me-2" @submit.prevent="startSearch()">
         <div class="form-group">
@@ -21,7 +21,12 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h1 {
+  font-size: 52px;
+  font-weight: 400;
+}
+</style>
 <script>
 export default {
   data() {
