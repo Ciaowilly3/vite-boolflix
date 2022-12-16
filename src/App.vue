@@ -19,7 +19,7 @@
   width: 100vw;
   position: absolute;
   top: 86.4px;
-  height: 100vh;
+  height: 91.5vh;
   h2 {
     font-size: 32px;
     animation-name: loader;
@@ -69,6 +69,7 @@ export default {
     };
   },
   methods: {
+    // ascolto l'emito dall'header e faccio partire fetchfilm dallo store
     startFetch(givenFilters) {
       // console.log("app " + givenFilters.name);
       fetchFilm(givenFilters);

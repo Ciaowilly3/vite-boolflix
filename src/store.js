@@ -5,6 +5,7 @@ export const store = reactive({
   seriesArray: [],
   searched: false,
 });
+// tramite questa funzione riempio sia filmsarray che seriesarray con due chiamate axios
 export function fetchFilm(filters) {
   //   console.log("store " + filters.name);
   axios

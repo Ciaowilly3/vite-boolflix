@@ -1,4 +1,5 @@
 <template>
+  <!-- ciclo gli array e passo tramite props il film e la serie a uno stesso componente con una sola props per entrambi -->
   <div class="container-full">
     <h2>Film relativi alla ricerca:</h2>
     <div class="d-flex card-row">
@@ -9,7 +10,7 @@
     <h2>Serie relative alla ricerca:</h2>
     <div class="d-flex card-row">
       <div class="card-container" v-for="serie in store.seriesArray">
-        <SerieCard :serie="serie"></SerieCard>
+        <FilmCard :movie="serie"></FilmCard>
       </div>
     </div>
   </div>
@@ -63,9 +64,8 @@
 <script>
 import { store } from "../store";
 import FilmCard from "./FilmCard.vue";
-import SerieCard from "./SerieCard.vue";
 export default {
-  components: { FilmCard, SerieCard },
+  components: { FilmCard },
   data() {
     return {
       store,
