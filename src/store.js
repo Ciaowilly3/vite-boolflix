@@ -3,6 +3,7 @@ import axios from "axios";
 export const store = reactive({
   filmsArray: [],
   seriesArray: [],
+  searched: false,
 });
 export function fetchFilm(filters) {
   //   console.log("store " + filters.name);
@@ -19,6 +20,13 @@ export function fetchFilm(filters) {
       store.filmsArray = resp.data.results;
 
       console.log(store.filmsArray);
+      if (store.filmsArray.length === 20) {
+        store.searched = true;
+      }
+    })
+    .catch((resp) => {
+      alert("la tua ricerca non ha portato a risultati, ricarica e riprova!");
+      console.log(resp);
     });
   axios
     .get("https://api.themoviedb.org/3/search/tv", {
@@ -33,5 +41,9 @@ export function fetchFilm(filters) {
       store.seriesArray = resp.data.results;
 
       console.log(store.seriesArray);
+    })
+    .catch((resp) => {
+      alert("la tua ricerca non ha portato a risultati, ricarica e riprova!");
+      console.log(resp);
     });
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="card-container">
-    <img :src="imageCreator(serie.poster_path)" alt="" class="w-100 d-block" />
+    <img :src="imageCreator" alt="" class="w-100 d-block" />
 
     <div class="info-container">
       <h5 class="text-center my-3 fs-4">{{ serie.name }}</h5>
@@ -9,7 +9,7 @@
 
         <li>
           Lingua originale:
-          <span :class="flagCreator(serie.original_language)"></span>
+          <span :class="flagCreator"></span>
         </li>
 
         <li>
@@ -82,31 +82,30 @@ export default {
       store,
     };
   },
-  methods: {
-    flagCreator(lang) {
-      // inserisco una sfilza di if per gestire i linguaggi non inserito con il codice alpha 2 usato dalla mia npm
-      if (lang === "en") {
-        lang = "gb";
-      }
-      if (lang === "ja") {
-        lang = "jp";
-      }
-      if (lang === "ko") {
-        lang = "kr";
-      }
-      if (lang === "hi") {
-        lang = "in";
-      }
-      return "fi fi-" + lang;
-    },
-    imageCreator(url) {
-      if (!url) {
+  methods: {},
+  computed: {
+    imageCreator() {
+      if (!this.serie.poster_path) {
         return "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/restroom-out-of-order-door-sign-printable-design-template-cc665dd6f85fc0e9a7f116e283acc820_screen.jpg?ts=1637013157";
       }
-      return "https://image.tmdb.org/t/p/" + "w342" + url;
+      return "https://image.tmdb.org/t/p/" + "w342" + this.serie.poster_path;
     },
-  },
-  computed: {
+    flagCreator() {
+      // inserisco una sfilza di if per gestire i linguaggi non inserito con il codice alpha 2 usato dalla mia npm
+      if (this.serie.original_language === "en") {
+        this.serie.original_language = "gb";
+      }
+      if (this.serie.original_language === "ja") {
+        this.serie.original_language = "jp";
+      }
+      if (this.serie.original_language === "ko") {
+        this.serie.original_language = "kr";
+      }
+      if (this.serie.original_language === "hi") {
+        this.serie.original_language = "in";
+      }
+      return "fi fi-" + this.serie.original_language;
+    },
     starBuilder() {
       const toReturn = [];
       const rawVote = this.serie.vote_average;
